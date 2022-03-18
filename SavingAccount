@@ -1,0 +1,25 @@
+package lab7;
+
+public class SavingAccount extends Account {
+
+    public SavingAccount() {
+        super();
+    }
+
+    public SavingAccount(int id, double balance) {
+        super(id, balance);
+    }
+
+    public void withdraw(double withdraw) {
+        if (withdraw <= getBalance() && withdraw > 0) {
+            setBalance(getBalance() - withdraw);
+        } else {
+            System.out.println("Error to withdraw.");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return super.toString();
+    }
+}
