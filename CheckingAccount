@@ -1,0 +1,43 @@
+package lab7;
+
+public class CheckingAccount extends Account {
+    private double overdraftLimit;
+
+    public CheckingAccount() {
+        super();
+        overdraftLimit = 0.0;
+    }
+
+    public CheckingAccount(int id, double balance, double overdraftLimit) {
+        super(id, balance);
+        this.overdraftLimit = overdraftLimit;
+    }
+
+    public void setOverdraftLimit(double overdraftLimit) {
+        if(overdraftLimit > 0) {
+            this.overdraftLimit = overdraftLimit;
+        } else {
+            System.out.println("Error to set overdraftLimit");
+        }
+    }
+
+    public double getOverdraftLimit() {
+        return overdraftLimit;
+    }
+
+    @Override
+    public void withdraw(double withdraw) {
+        if ((getBalance() - withdraw >= (0 - overdraftLimit)) && withdraw > 0) {
+            setBalance(getBalance() - withdraw);
+        } else {
+            System.out.println("Error to withdraw");
+        }
+    }
+
+    @Override
+    public String toString() {
+        return "CheckingAccount{" +
+                "overdraftLimit=" + overdraftLimit +
+                '}';
+    }
+}
